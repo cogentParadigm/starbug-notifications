@@ -2,7 +2,6 @@
 
 namespace Starbug\Notifications;
 
-use Starbug\Bundle\Bundle;
 use Starbug\Db\Schema\AbstractMigration;
 use Starbug\Db\Schema\SchemaInterface;
 
@@ -47,7 +46,7 @@ class Migration extends AbstractMigration {
       }
     }
 
-    $configuration = new Bundle(["table" => "menus", "keys" => ["menu" => "admin", "content" => "Configuration"]]);
+    $configuration = $this->schema->addRow("menus", ["menu" => "admin", "content" => "Configuration"], ["icon" => "fa-cogs"]);
     $this->schema->addRow("menus", ["menu" => "admin", "href" => "admin/notifications"], ["parent" => $configuration, "content" => "Notifications"]);
   }
 }
